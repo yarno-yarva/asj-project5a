@@ -1,18 +1,25 @@
-import sortA from '../app';
+import {Character} from '../app';
 
-test('create class Bowerman', () => {
+
+test('create class Character', () => {
   const name = 'Nikita';
-  const newClass = new Bowerman (name); 
+  const newClass = new Character (name); 
 
   const etalon = {
       "name": "Nikita",
       "health": 100,
       "level": 1,
-      "type": "Bowerman",
-      "attack": 25,
-      "defence": 25
   };
 
   const result = newClass;
   expect(result).toEqual(etalon);
 });
+
+test('error class Character', () => {
+  const name = 'Nikita1234567890';
+  const newClass = new Character (name);
+ 
+  expect(newClass).toThrow(Error('Возможное название от 2-х до 10-ти символов'));
+});
+  
+
